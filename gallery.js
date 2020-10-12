@@ -7,6 +7,7 @@ const galleryContainer = document.querySelector('.js-gallery');
 const imagesMarkup = createImagesCardsMarkup(images);
 
 galleryContainer.insertAdjacentHTML('beforeend', imagesMarkup);
+galleryContainer.addEventListener('click', onGalleryContainerClick);
 
 function createImagesCardsMarkup(images) {
   return images.map(({preview, original, description}) => {
@@ -29,3 +30,9 @@ function createImagesCardsMarkup(images) {
       .join('');
 }
   
+function onGalleryContainerClick(event) { 
+  if (!event.target.classList.contains('gallery__image')) {
+    return;
+  }
+  console.log(event.target.dataset.original);
+};
